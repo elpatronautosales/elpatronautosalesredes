@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#090312">
+<meta name="description" content="El Patrón Auto Sales — Redes sociales y contacto por WhatsApp.">
+<title>El Patrón Auto Sales</title>
+<style>
+:root {
+  --purple:#7b18ff;
+  --pink:#ff18a8;
+  --magenta:#ff4bd1;
+  --cyan:#4cddff;
+  --green:#25d366;
+  --ink:#07030d;
+  --glass:rgba(18,8,35,.72);
+}
+* { box-sizing:border-box; }
+html { min-height:100%; background:var(--ink); }
+body {
+  margin:0; min-height:100vh; color:#fff;
+  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:
+    radial-gradient(circle at 50% 5%, rgba(164,38,255,.28), transparent 30%),
+    #07030d;
+}
+.page {
+  min-height:100vh; position:relative; overflow:hidden;
+  background:
+    linear-gradient(180deg, rgba(7,3,13,.05) 0%, rgba(7,3,13,.55) 38%, #07030d 78%),
+    url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYAAQAAAADTLQAAAAAAAAAA[...]
+}
+.page::before {
+  content:""; position:fixed; inset:0; pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 30%, rgba(255,24,168,.22), transparent 28%),
+    radial-gradient(circle at 90% 35%, rgba(123,24,255,.28), transparent 30%);
+  mix-blend-mode:screen;
+}
+.wrap { position:relative; z-index:1; width:min(520px,92vw); margin:auto; padding:14px 0 34px; }
+.banner {
+  width:100%; aspect-ratio:1536/588; object-fit:cover; display:block;
+  border-radius:22px; border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 0 35px rgba(151,35,255,.30), 0 18px 50px rgba(0,0,0,.45);
+}
+.profile { text-align:center; margin-top:-30px; }
+.avatar {
+  width:94px; height:94px; margin:0 auto; border-radius:50%;
+  object-fit:cover; object-position:center;
+  border:3px solid rgba(255,255,255,.9);
+  box-shadow:0 0 0 5px rgba(255,24,168,.22), 0 0 35px rgba(255,24,168,.55);
+}
+h1 {
+  margin:13px 0 3px; font-size:29px; line-height:1; letter-spacing:-1px;
+  font-weight:950; text-transform:uppercase;
+  text-shadow:0 0 12px rgba(255,255,255,.35),0 0 24px rgba(255,24,168,.45);
+}
+.handle { color:#d9cfe4; font-size:13px; font-weight:700; letter-spacing:.5px; }
+.pitch {
+  margin:15px auto 20px; font-size:14px; line-height:1.5; font-weight:750;
+  color:#fff; max-width:420px;
+}
+.pitch span {
+  background:linear-gradient(90deg,var(--pink),var(--cyan));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.links { display:grid; gap:12px; }
+.btn {
+  position:relative; min-height:62px; padding:12px 18px;
+  display:flex; align-items:center; justify-content:center; gap:12px;
+  border-radius:18px; color:#fff; text-decoration:none; font-size:16px; font-weight:900;
+  background:linear-gradient(105deg,rgba(24,11,43,.88),rgba(9,8,21,.76));
+  border:1px solid rgba(255,255,255,.15);
+  box-shadow:0 12px 28px rgba(0,0,0,.28), inset 0 0 20px rgba(255,255,255,.025);
+  backdrop-filter:blur(14px);
+  transition:transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.btn:hover {
+  transform:translateY(-2px);
+  border-color:rgba(255,255,255,.38);
+  box-shadow:0 15px 35px rgba(0,0,0,.38),0 0 24px rgba(173,33,255,.22);
+}
+.btn .icon {
+  width:28px; height:28px; display:grid; place-items:center; flex:0 0 28px;
+  border-radius:9px; background:rgba(255,255,255,.09);
+}
+.btn svg { width:20px; height:20px; fill:currentColor; stroke:currentColor; stroke-width:0; }
+.btn.instagram svg { fill:none; stroke:currentColor; stroke-width:1.9; }
+.btn.instagram svg .fill { fill:currentColor; stroke:none; }
+.btn.facebook svg { fill:currentColor; }
+.btn.tiktok { box-shadow:0 12px 28px rgba(0,0,0,.28), 0 0 22px rgba(255,24,168,.10); }
+.btn.tiktok .icon { background:linear-gradient(135deg,rgba(0,242,234,.22),rgba(255,0,80,.24)); }
+.btn.instagram .icon { background:linear-gradient(135deg,rgba(255,210,70,.20),rgba(255,20,147,.28)); }
+.btn.facebook .icon { background:rgba(24,119,242,.28); }
+.btn.wa {
+  background:linear-gradient(105deg,rgba(16,135,72,.92),rgba(8,67,39,.9));
+  border-color:rgba(37,211,102,.34);
+  box-shadow:0 12px 30px rgba(0,0,0,.3),0 0 22px rgba(37,211,102,.10);
+}
+.btn.wa .icon { background:rgba(37,211,102,.18); }
+.section-label {
+  display:flex; align-items:center; gap:10px; margin:22px 2px 10px;
+  color:#c8bfd0; font-size:11px; text-transform:uppercase; letter-spacing:2px; font-weight:900;
+}
+.section-label::before,.section-label::after { content:""; height:1px; flex:1; background:linear-gradient(90deg,transparent,rgba(255,255,255,.18)); }
+.section-label::after { background:linear-gradient(90deg,rgba(255,255,255,.18),transparent); }
+.footer { text-align:center; margin-top:22px; color:#92889b; font-size:10px; letter-spacing:1.3px; font-weight:700; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="wrap">
+    <img class="banner" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9tYA[...]
+
+    <section class="profile">
+      <img class="avatar" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4gHYSUNDX1BST0ZJTEUAAQEAAAHIAAAAAAQwAABtbnRyUkdCIFhZWiAH4AABAAEAAAAAAABhY3NwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA9t[...]
+      <h1>El Patrón</h1>
+      <div class="handle">AUTO SALES</div>
+      <div class="pitch">
+        <span>Venta y financiamiento</span> · Importación y legalización<br>
+        Síguenos y contáctanos directamente.
+      </div>
+    </section>
+
+    <div class="links">
+      <a class="btn tiktok" href="https://www.tiktok.com/@el.patron.autosales" target="_blank" rel="noopener">
+        <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.7 3c.35 2.7 1.9 4.25 4.3 4.45v3.1c-1.85-.05-3.35-.58-4.55-1.48v6.15a5.75 5.75 0 1 1-4.98-5.7v3.2a2.55 2.55 0 1 0 1.7[...]
+      </a>
+      <a class="btn instagram" href="https://www.instagram.com/elpatronautosales_nld" target="_blank" rel="noopener">
+        <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.5" cy="6.7" r="1.15" cla[...]
+      </a>
+      <a class="btn facebook" href="https://www.facebook.com/share/18hptio9Do/" target="_blank" rel="noopener">
+        <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.7 21v-8h2.7l.4-3h-3.1V8.1c0-.87.25-1.46 1.52-1.46h1.63V3.96c-.28-.04-1.23-.12-2.34-.12-2.32 0-3.91 1.42-3.91 4.03V10[...]
+      </a>
+    </div>
+
+    <div class="section-label">Contacto directo</div>
+
+    <div class="links">
+      <a class="btn wa" href="https://wa.me/528674926501" target="_blank" rel="noopener">
+        <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.05 11.05 0 0 0 12.65.2C6.56.2 1.6 5.15 1.6 11.25c0 1.94.51 3.83 1.48 5.5L1.5 22.8l6.2-1.63a11.04 11.04 0 0 [...]
+      </a>
+      <a class="btn wa" href="https://wa.me/528672125047" target="_blank" rel="noopener">
+        <span class="icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.05 11.05 0 0 0 12.65.2C6.56.2 1.6 5.15 1.6 11.25c0 1.94.51 3.83 1.48 5.5L1.5 22.8l6.2-1.63a11.04 11.04 0 0 [...]
+      </a>
+    </div>
+
+    <div class="footer">EL PATRÓN AUTO SALES · NUEVO LAREDO</div>
+  </div>
+</div>
+</body>
+</html>
